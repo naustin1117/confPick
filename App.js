@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import LoginScreen from './views/LoginScreen';
 import HomeScreen from './views/HomeScreen';
+import CreatePoolScreen from './views/createPoolScreen';
+import YourPoolsScreen from './views/yourPoolsScreen';
 import {NativeRouter, Routes, Route, Link,} from "react-router-native";
 
 export default function App() {
@@ -10,6 +12,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/login" element={<LoginScreen />} />
+        <Route path="/createPool" element={<CreatePoolScreen />} />
+        <Route path="/yourPools" element={<YourPoolsScreen />} />
       </Routes>
     </NativeRouter>
   );

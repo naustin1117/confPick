@@ -1,5 +1,4 @@
 import {TouchableOpacity, Text, View} from "react-native";
-import {useNavigate} from "react-router-native";
 
 const CustomButton = (props) => {
     if(props.onPress) {
