@@ -10,7 +10,7 @@ const YourPoolsScreen = () => {
     
     return (
         <View style={yourPoolStyle.container}>
-            <CustomButton style={yourPoolStyle}text={"back to Homepage"} onPress={handlePress}/>
+            <CustomButton style={yourPoolStyle} text={"back to Homepage"} onPress={handlePress}/>
             <Text>Your Pools</Text>
         </View>
         

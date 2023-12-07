@@ -4,20 +4,26 @@ import LoginScreen from './views/LoginScreen';
 import HomeScreen from './views/HomeScreen';
 import CreatePoolScreen from './views/createPoolScreen';
 import YourPoolsScreen from './views/yourPoolsScreen';
-import {NativeRouter, Routes, Route, Link,} from "react-router-native";
+import SignupScreen from './views/SignupScreen';
+import {NativeRouter, Routes, Route} from "react-router-native";
+import  { Account } from "./cognito/Account";
 
-export default function App() {
+const App = () => {
   return (
-    <NativeRouter>
-      <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/login" element={<LoginScreen />} />
-        <Route path="/createPool" element={<CreatePoolScreen />} />
-        <Route path="/yourPools" element={<YourPoolsScreen />} />
-      </Routes>
-    </NativeRouter>
+    <Account>
+      <NativeRouter>
+        <Routes>
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
+          <Route path="/createPool" element={<CreatePoolScreen />} />
+          <Route path="/yourPools" element={<YourPoolsScreen />} />
+          <Route path="/signup" element={<SignupScreen />} />
+        </Routes>
+      </NativeRouter>
+    </Account>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -30,3 +36,5 @@ const styles = StyleSheet.create({
     padding: 10
   }
 });
+
+export default App;

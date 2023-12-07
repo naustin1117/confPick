@@ -26,10 +26,11 @@ const loginStyle = StyleSheet.create({
     },
     inputStyle:{
         backgroundColor: '#FFFFFF',
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
+        height: 50,
+        margin: 10,
+        width: 350,
         padding: 10,
+        borderRadius: 10
     },
     button:{
         color: "#FFFFFF",

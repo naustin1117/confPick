@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import {View,TextInput, Text} from 'react-native';
 import loginStyle from '../styles/loginStyle.js';
 import CustomButton from "../components/CustomButton.js";
 import {useNavigate} from "react-router-native";
+import { CognitoUser, AuthenticationDetails} from "amazon-cognito-identity-js";
+import UserPool from '../cognito/UserPool.js';
+import { AccountContext } from "../cognito/Account.js";
 
 const LoginScreen = () => {
-    const [usernameText, onUsernameChangeText] = React.useState("");
-    const[passwordText, onPasswordChangeText] = React.useState("");
+    const [email, setEmail] = useState("");
+    const[password, setPassword] = useState("");
+
+    console.log(AccountContext);
+
+    const {authenticate} = useContext(AccountContext);
 
     const navigate = useNavigate();
-    const handlePress = () => navigate("/");
+    const handleLoginPress = () => navigate("/");
+    const handleSignupPress = () => navigate("/signup");
+
+    const onSubmit = () => {
+    
+        authenticate(email, password)
+        .then(data => {
+            console.log("Logged In!", data);
+        })
+        .catch(err => {
+            console.log("Failed to Login!", data);
+        })
+    };
 
     return (
         
@@ -20,21 +39,20 @@ const LoginScreen = () => {
             </View>
             <View style={loginStyle.lowBanner}>
                 <TextInput
-                onChangeText={onUsernameChangeText}
-                value={usernameText}
+                onChangeText={setEmail}
+                value={email}
                 placeholder='Username'
                 style={loginStyle.inputStyle}
                 />
                     <TextInput
-                onChangeText={onPasswordChangeText}
-                value={passwordText}
+                onChangeText={setPassword}
+                value={password}
                 placeholder='Password'
                 style={loginStyle.inputStyle}
                 />
 
-                {/* <CustomButton style={loginStyle} text={"Login"} path={'/login'} /> */}
-                <CustomButton style={loginStyle} text={"Login"} onPress={handlePress}/>
-                <CustomButton style={loginStyle} text={"Sign up"} />
+                <CustomButton style={loginStyle} text={"Login"} onPress={onSubmit}/>
+                <CustomButton style={loginStyle} text={"Sign up"} onPress={handleSignupPress}/>
             </View>
         </View>
         
