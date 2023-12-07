@@ -24,6 +24,7 @@ const LoginScreen = () => {
         authenticate(email, password)
         .then(data => {
             console.log("Logged In!", data);
+            navigate("/");
         })
         .catch(err => {
             console.log("Failed to Login!", data);
