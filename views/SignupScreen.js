@@ -27,7 +27,7 @@ const SignupScreen = () => {
                 return;
             }
             console.log(data);
-            useNavigate("/");
+            navigate("/");
         })
 
     };
