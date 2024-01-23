@@ -9,7 +9,7 @@ const CreatePoolScreen = () => {
     const navigate = useNavigate();
     const handlePress = () => navigate("/");
     const handleCreate = () => {
-        DDBPut(poolName)
+        DDBPut(poolName, isPrivate)
     };
 
     const[poolName, setPoolName] = useState("");

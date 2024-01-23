@@ -1,11 +1,12 @@
 import dynamoDB from "../DynamoDB";
 
-const DDBPut = (poolName) => {
+const DDBPut = (poolName, isPrivate) => {
     const params = {
         TableName: 'AppCdkStack-MyDDBTablePoolsTable46BEE466-ADLV2FB9OB1V',
         Item: {
             PoolID: {S: "1234567"},
-            PoolName: {S: poolName}
+            PoolName: {S: poolName},
+            IsPrivate: {BOOL: isPrivate},
         },
     };
 
