@@ -14,9 +14,30 @@ const Account = (props) => {
                     if(err){
                         reject();
                     } else {
+                        console.log("HERE IS THE SESSION: " + session);
                         resolve(session);
                     }
                 })
+                console.log("User attributes: " + user.getUserAttributes());
+            } else {
+                reject();
+            }
+        })
+    }
+    const getUserID = async () => {
+        return await new Promise((resolve, reject) => {
+            const user = UserPool.getCurrentUser();
+            if(user) {
+                user.getUserD
+                user.getSession((err, session) => {
+                    if(err){
+                        reject();
+                    } else {
+                        console.log(session);
+                        resolve(session);
+                    }
+                })
+                console.log("User attributes: " + user.getUserAttributes());
             } else {
                 reject();
             }
@@ -48,10 +69,10 @@ const Account = (props) => {
                     resolve(data);
                 }
             });
-        });
+        })
     };
     return (
-        <AccountContext.Provider value={{ authenticate, getSession}}>
+        <AccountContext.Provider value={{ authenticate, getSession, getUserID}}>
             {props.children}
         </AccountContext.Provider>
     )

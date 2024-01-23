@@ -10,6 +10,7 @@ import { AccountContext } from "../cognito/Account.js";
 const LoginScreen = () => {
     const [email, setEmail] = useState("");
     const[password, setPassword] = useState("");
+    const[isEnabled, setIsEnabled] = useState(false);
 
     console.log(AccountContext);
 
@@ -51,7 +52,6 @@ const LoginScreen = () => {
                 placeholder='Password'
                 style={loginStyle.inputStyle}
                 />
-
                 <CustomButton style={loginStyle} text={"Login"} onPress={onSubmit}/>
                 <CustomButton style={loginStyle} text={"Sign up"} onPress={handleSignupPress}/>
             </View>

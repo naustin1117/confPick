@@ -4,18 +4,24 @@ import {Text} from 'react-native';
 
 const Status = () => {
     const [status, setStatus] = useState(false);
+    const [userID, setUserID] = useState("");
+    const [username, setUsername] = useState("");
 
     const { getSession } = useContext(AccountContext);
 
     useEffect(() => {
         getSession()
             .then(session => {
-                console.log("Session: ", session);
                 setStatus(true);
+                setUserID(session.accessToken.payload.sub);
+                console.log("Username: " + session.accessToken.payload.preferred_username);
+                console.log("userID: " + session.accessToken.payload.sub);
+                console.log("session: " + session);
+                setUsername(session.accessToken.payload.preferred_username);
             })
     },[]);
     return (
-        <Text>{status ? "Signed in": "Not Logged in"}</Text>
+        <Text>{status ? username + " Signed in": "Not Logged in"}</Text>
     )
 };
 

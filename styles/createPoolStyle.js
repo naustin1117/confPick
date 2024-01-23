@@ -7,6 +7,12 @@ const createPoolStyle = StyleSheet.create({
       backgroundColor: "#fff",
       margin: 30,
       gap: 20, 
+    },
+    input: {
+      
+    },
+    yourPools: {
+
     }
   });
   
